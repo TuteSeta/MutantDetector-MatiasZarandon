@@ -20,7 +20,7 @@ public class DnaController {
 
     @PostMapping("")
     public ResponseEntity<DnaResponse> checkMutant(@RequestBody @Valid DnaRequest dnaRequest) {
-        boolean isMutant = dnaService.isMutant(dnaRequest.getDna());
+        boolean isMutant = dnaService.saveDna(dnaRequest.getDna());
         DnaResponse dnaResponse = new DnaResponse(isMutant);
         if (isMutant) {
             return ResponseEntity.ok(dnaResponse);
