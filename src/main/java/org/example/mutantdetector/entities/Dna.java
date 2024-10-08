@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 public class Dna extends Base implements Serializable {
 
-    @Column(name = "ADN",columnDefinition = "text", unique = true)
+    @Column(name = "ADN")
     private String dna;
 
     private boolean isMutant;
