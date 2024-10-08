@@ -1,13 +1,13 @@
 package org.example.mutantdetector.controllers;
 
+import jakarta.validation.Valid;
+import org.example.mutantdetector.dto.DnaRequest;
+import org.example.mutantdetector.dto.DnaResponse;
 import org.example.mutantdetector.services.DnaService;
-import org.example.mutantdetector.services.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -16,23 +16,16 @@ public class DnaController {
 
     @Autowired
     private DnaService dnaService;
-    @Autowired
-    private StatsService statsService;
+
 
     @PostMapping("")
-    public ResponseEntity<?> isMutant(@RequestBody Map<String, String[]> dna) {
-        boolean isMutant = dnaService.isMutant(dna.get("dna"));
-        dnaService.saveDna(dna.get("dna"), isMutant);
+    public ResponseEntity<DnaResponse> checkMutant(@RequestBody @Valid DnaRequest dnaRequest) {
+        boolean isMutant = dnaService.isMutant(dnaRequest.getDna());
+        DnaResponse dnaResponse = new DnaResponse(isMutant);
         if (isMutant) {
-            return new ResponseEntity<>("Mutant detected", HttpStatus.OK);
+            return ResponseEntity.ok(dnaResponse);
         } else {
-            return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(dnaResponse);
         }
-    }
-
-    @GetMapping("/stats")
-    public ResponseEntity<?> getStats() {
-        Map<String, Object> stats = statsService.getDnaStats();
-        return new ResponseEntity<>(stats, HttpStatus.OK);
     }
 }

@@ -105,20 +105,26 @@ public class DnaService {
         return count;
     }
 
-    public Dna saveDna(String[] dna, boolean isMutant) {
-        String dnaAsString = Arrays.toString(dna);
+    public boolean saveDna(String[] dna) {
+        String dnaSequence = String.join(",", dna);
+
 
         // Verificar si ya existe un registro con este ADN
-        Optional<Dna> existingDna = dnaRepository.findByDna(dnaAsString);
+        Optional<Dna> existingDna = dnaRepository.findByDna(dnaSequence);
 
         // Si ya existe, no guardar de nuevo
         if (existingDna.isPresent()) {
-            return existingDna.get();  // Retorna el registro existente
+            return existingDna.get().isMutant();  // Retorna el registro existente
         }
 
-        Dna dnaEntity = new Dna();
-        dnaEntity.setDna(dna);
-        dnaEntity.setMutant(isMutant);
-        return dnaRepository.save(dnaEntity);
+        // Determinamos si el ADN es mutante y lo guardamos en la base de datos
+        boolean isMutant = isMutant(dna);
+        Dna dnaEntity = Dna.builder()
+                .dna(dnaSequence)
+                .isMutant(isMutant)
+                .build();
+        dnaRepository.save(dnaEntity);
+
+        return isMutant(dna);
     }
 }
