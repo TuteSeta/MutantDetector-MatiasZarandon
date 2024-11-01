@@ -45,4 +45,4 @@ Obtiene todas cuantos adn humanos y mutantes hay en la base de datos y saca el p
 }
 ```
 ## 🎉 ¡Listo para Detectar Mutantes!
-Gracias por visitar este proyecto. Si tienes alguna sugerencia o encuentras algún problema, ¡no dudes en abrir un issue! 🙌
+Gracias por visitar este proyecto. 🙌
