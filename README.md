@@ -45,4 +45,4 @@ Obtiene todas cuantos adn humanos y mutantes hay en la base de datos y saca el p
 }
 ```
 # 🎉 ¡Listo para Detectar Mutantes!
-
+https://github.com/TuteSeta/MutantDetector-MatiasZarandon/issues/2#issue-2629817500
