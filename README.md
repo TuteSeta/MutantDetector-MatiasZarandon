@@ -44,5 +44,5 @@ Obtiene todas cuantos adn humanos y mutantes hay en la base de datos y saca el p
   "dna": ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"]
 }
 ```
-## 🎉 ¡Listo para Detectar Mutantes!
-Gracias por visitar este proyecto. 🙌
+# 🎉 ¡Listo para Detectar Mutantes!
+
