@@ -45,4 +45,5 @@ Obtiene todas cuantos adn humanos y mutantes hay en la base de datos y saca el p
 }
 ```
 # 🎉 ¡Listo para Detectar Mutantes!
-https://github.com/TuteSeta/MutantDetector-MatiasZarandon/issues/2#issue-2629817500
+![marvel-vs-capcom-mvc](https://github.com/user-attachments/assets/79686be2-3b80-427a-9a42-d1321754add2)
+
