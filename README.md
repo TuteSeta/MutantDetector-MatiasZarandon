@@ -2,9 +2,9 @@
 
 ¡Bienvenido al proyecto **Mutant Detector**! Esta aplicación es una API REST que analiza secuencias de ADN para determinar si un humano es mutante. 💻🔬
 
-<p align="center">
+
 ![Mutant](https://github.com/user-attachments/assets/634d7188-629c-4993-b035-a6ad9d41e273)
-</p>
+
 
 ## 📜 Funcionalidad
 
