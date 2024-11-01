@@ -15,11 +15,6 @@ public class DnaService {
     private DnaRepository dnaRepository;
 
     public boolean isMutant(String[] dna) {
-        // Validar que el ADN solo contenga A, T, G, C
-        if (!isValidDna(dna)) {
-            throw new IllegalArgumentException("DNA must only contain the characters A, T, G, C.");
-        }
-
         int sequenceCount = 0; // Contador de secuencias encontradas
         int size = dna.length;
 
@@ -31,13 +26,6 @@ public class DnaService {
         // Es mutante si encuentra más de una secuencia
         return sequenceCount > 1;
     }
-
-    //Método para validar que el ADN solo contenga A, T, G, C
-    private boolean isValidDna(String[] dna) {
-        return IntStream.range(0, dna.length)
-                .allMatch(i -> dna[i].matches("[ATGC]+")); // Verificar que cada fila contenga solo A, T, G, C
-    }
-
 
     private int checkAllHorizontal(String[] dna,int size) {
         return IntStream.range(0, size)
