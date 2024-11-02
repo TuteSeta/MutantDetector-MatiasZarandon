@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import org.example.mutantdetector.dto.DnaRequest;
 import org.example.mutantdetector.dto.DnaResponse;
 import org.example.mutantdetector.services.DnaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +13,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/mutant")
 public class DnaController {
 
-    @Autowired
-    private DnaService dnaService;
+    private final DnaService dnaService;
 
-
+    public DnaController(DnaService dnaService) {
+        this.dnaService = dnaService;
+    }
     @PostMapping("")
     public ResponseEntity<DnaResponse> checkMutant(@RequestBody @Valid DnaRequest dnaRequest) {
-        boolean isMutant = dnaService.isMutant(dnaRequest.getDna());
+        boolean isMutant = dnaService.saveDna(dnaRequest.getDna());
         DnaResponse dnaResponse = new DnaResponse(isMutant);
         if (isMutant) {
             return ResponseEntity.ok(dnaResponse);

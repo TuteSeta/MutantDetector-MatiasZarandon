@@ -1,11 +1,10 @@
 package org.example.mutantdetector.validations;
 
-
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-
 import java.util.Arrays;
-public class DnaValidator implements ConstraintValidator<ValidDna, String[]> {
+
+public class DnaValidator implements ConstraintValidator<ValidateDna, String[]> {
 
     @Override
     public boolean isValid(String[] dna, ConstraintValidatorContext context) {
@@ -42,18 +41,7 @@ public class DnaValidator implements ConstraintValidator<ValidDna, String[]> {
             return false;
         }
 
-        // Validar que no sea homogéneo (todo el array igual)
-        char firstChar = dna[0].charAt(0);
-        boolean isHomogeneous = Arrays.stream(dna)
-                .allMatch(row -> row.chars().allMatch(ch -> ch == firstChar));
-        if (isHomogeneous) {
-            context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate("El array no puede ser homogeneo (todas las letras iguales).")
-                    .addConstraintViolation();
-            return false;
-        }
-
-        // Si pasa todas las validaciones, es válido
+        // Si pasa todas las validaciones devuelve true
         return true;
     }
 }
